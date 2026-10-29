@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Face Emotion AI</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="/static/script.js" defer></script>
+</head>
+
+<body>
+    <header class="navbar">
+        <a href="/" class="brand">
+            <span class="brand-icon">◈</span>
+            EmotionAI
+        </a>
+
+        <div class="nav-status">
+            <span class="status-dot"></span>
+            AI Detection System
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <div class="eyebrow">
+                <span class="sparkle">✦</span>
+                COMPUTER VISION · DEEP LEARNING
+            </div>
+
+            <h1>Understand emotions.<br>
+                <span>In real time.</span>
+            </h1>
+
+            <p class="hero-description">
+                Experience AI-powered facial emotion detection using
+                your webcam and a trained CNN model.
+            </p>
+        </section>
+
+        <section class="dashboard">
+            <div class="camera-card">
+                <div class="card-header">
+                    <div>
+                        <h2>Live camera</h2>
+                        <p>Position your face inside the frame</p>
+                    </div>
+
+                    <span id="cameraStatus" class="status-badge">
+                        Camera off
+                    </span>
+                </div>
+
+                <div class="camera-stage" id="cameraStage">
+                    <video id="video" autoplay playsinline muted></video>
+                    <canvas id="overlay"></canvas>
+
+                    <div id="cameraPlaceholder" class="camera-placeholder">
+                        <div class="camera-icon">◎</div>
+                        <h3>Your camera is waiting</h3>
+                        <p>Start the camera to begin emotion detection.</p>
+                    </div>
+
+                    <div class="camera-corner top-left"></div>
+                    <div class="camera-corner top-right"></div>
+                    <div class="camera-corner bottom-left"></div>
+                    <div class="camera-corner bottom-right"></div>
+
+                    <div class="camera-overlay-label">
+                        <span class="status-dot"></span>
+                        LIVE ANALYSIS
+                    </div>
+                </div>
+
+                <div class="camera-actions">
+                    <button id="startBtn" class="btn btn-primary">
+                        <span>▶</span> Start Camera
+                    </button>
+
+                    <button id="stopBtn" class="btn btn-secondary" disabled>
+                        ■ Stop Camera
+                    </button>
+                </div>
+
+                <p id="message" class="message" role="status" aria-live="polite">
+                    Allow camera access when prompted.
+                </p>
+            </div>
+
+            <aside class="results-column">
+                <div class="result-card main-result">
+                    <div class="card-header">
+                        <div>
+                            <h2>Emotion analysis</h2>
+                            <p>Latest prediction</p>
+                        </div>
+                        <span class="result-symbol">✧</span>
+                    </div>
+
+                    <div class="emotion-display">
+                        <div id="emotionEmoji" class="emotion-emoji">😐</div>
+                        <div>
+                            <p class="mini-label">DETECTED EMOTION</p>
+                            <h3 id="emotionName">Waiting...</h3>
+                            <p id="confidenceText" class="confidence-text">
+                                No prediction yet
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="confidence-track">
+                        <div id="confidenceBar" class="confidence-bar"></div>
+                    </div>
+
+                    <div class="confidence-footer">
+                        <span>Model score</span>
+                        <strong id="confidenceValue">—</strong>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <div class="card-header">
+                        <div>
+                            <h2>Detection summary</h2>
+                            <p>Current camera frame</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-row">
+                        <span>Faces detected</span>
+                        <strong id="faceCount">0</strong>
+                    </div>
+
+                    <div class="stat-row">
+                        <span>Analysis status</span>
+                        <strong id="analysisStatus">Idle</strong>
+                    </div>
+
+                    <div class="stat-row">
+                        <span>Model</span>
+                        <strong>CNN · 48 × 48</strong>
+                    </div>
+                </div>
+
+                <div class="privacy-note">
+                    <span>🔒</span>
+                    <p>
+                        Camera frames are processed by your configured API.
+                        This website does not save images.
+                    </p>
+                </div>
+            </aside>
+        </section>
+
+        <section class="emotion-section">
+            <div class="section-heading">
+                <div>
+                    <h2>Seven emotion classes</h2>
+                    <p>Categories supported by your trained model</p>
+                </div>
+            </div>
+
+            <div class="emotion-grid">
+                <div class="emotion-tile">
+                    <span>😠</span><p>Angry</p>
+                </div>
+                <div class="emotion-tile">
+                    <span>🤢</span><p>Disgust</p>
+                </div>
+                <div class="emotion-tile">
+                    <span>😨</span><p>Fear</p>
+                </div>
+                <div class="emotion-tile">
+                    <span>😄</span><p>Happy</p>
+                </div>
+                <div class="emotion-tile">
+                    <span>😐</span><p>Neutral</p>
+                </div>
+                <div class="emotion-tile">
+                    <span>😢</span><p>Sad</p>
+                </div>
+                <div class="emotion-tile">
+                    <span>😲</span><p>Surprise</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>EmotionAI · CNN-powered facial emotion recognition</p>
+            <p>Predictions are estimates, not definitive measures of feelings.</p>
+        </footer>
+    </main>
+</body>
+</html>
